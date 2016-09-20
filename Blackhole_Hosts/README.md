@@ -8,8 +8,8 @@ Create a textfile called `blackhole_hosts.txt` in the startup folder of Burp. Ad
 
 Example:
 ```
-www.google.com*
-clients*.google.com
+www.google.com.*
+clients[0-9].google.com
 www.gstatic.com
 analytics.getpostman.com
 www.google-analytics.com

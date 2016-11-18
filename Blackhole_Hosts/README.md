@@ -1,5 +1,5 @@
 ## Blackhole Hosts
-Blackhole Hosts is an extension that drops proxy requests to certain hosts. This allows you to effectively blackhole hosts, while not modifying Burp's scope.
+Blackhole Hosts is an extension that drops proxy requests to certain hosts, and logs those dropped requests. This allows you to effectively blackhole hosts, while not modifying Burp's (included or excluded) scope.
 
 It is a Python extension, and therefore needs Jython.
 
@@ -8,12 +8,17 @@ Create a textfile called `blackhole_hosts.txt` in the startup folder of Burp. Ad
 
 Example:
 ```
-www.google.com.*
-clients[0-9].google.com
-www.gstatic.com
-analytics.getpostman.com
-www.google-analytics.com
-app.getsentry.com
+.*2o7\.net
+.*\..*google..*
+.*\.gstatic\.com
+.*\.pingvp\.com
+.*\.salesforceliveagent\.com
+.*blueconic\.net
+.*facebook\.[com|net]
+analytics\.getpostman\.com
+app\.getsentry\.com
+col\.eum-appdynamics\.com
+w\.usabilla\.com
 ```
 
 As soon as the extension is loaded it will read the configuration file and show the loaded rules in the extension's Output tab. Blocked requests will also be shown.
@@ -22,7 +27,7 @@ If the extension cannot load the configuration file or encounters other errors, 
 
 
 ### Current version
-0.1
+0.3
 
 ### Author
 Peter Mosmans

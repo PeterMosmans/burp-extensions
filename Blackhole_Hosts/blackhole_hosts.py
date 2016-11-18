@@ -19,7 +19,7 @@ from burp import IInterceptedProxyMessage
 from java.io import PrintWriter
 
 TITLE = 'Blackhole Hosts'
-VERSION = '0.2'
+VERSION = '0.3'
 CONFIG_FILE = 'blackhole_hosts.txt'
 
 
@@ -51,7 +51,8 @@ class BurpExtender(IBurpExtender, IProxyListener):
                     for config_line in read_file.read().splitlines():
                         try:
                             self.regexps.append(re.compile(config_line))
-                            self.stdout.println(config_line)
+                            self.stdout.println('[+] dropping requests for ' + \
+                                                config_line)
                         except:
                             self.stdout.println('[-] invalid regular expression: ' + \
                                                 config_line)
@@ -59,7 +60,8 @@ class BurpExtender(IBurpExtender, IProxyListener):
                 self.stderr.println('[-] could not read {0} from {1}'.
                                     format(input_file, os.getcwd()))
         except IOError as exception:
-            self.stderr.println('[-] could not read {0} ({1}'.format(input_file, exception))
+            self.stderr.println('[-] could not read {0} ({1}'.format(input_file,
+                                                                     exception))
         self.stdout.println('[+] {0} - version {1} loaded'.format(TITLE, VERSION))
         return
 
@@ -69,7 +71,7 @@ class BurpExtender(IBurpExtender, IProxyListener):
         Processes intercepted Proxy messages.
 
         @messageIsRequest: boolean whether method is invoked for a request or response.
-        @mesage: IInterceptedProxy Message
+        @message: IInterceptedProxy Message
         """
         if messageIsRequest:
             for regexp in self.regexps:

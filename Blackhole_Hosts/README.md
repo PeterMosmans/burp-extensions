@@ -8,16 +8,17 @@ Create a textfile called `blackhole_hosts.txt` in the startup folder of Burp. Ad
 
 Example:
 ```
-.*2o7\.net
-.*\..*google..*
+.*\.2o7\.net
+.*\.google\..*
+.*\.blueconic\.net
+.*\.facebook\.[com|net]
 .*\.gstatic\.com
 .*\.pingvp\.com
 .*\.salesforceliveagent\.com
-.*blueconic\.net
-.*facebook\.[com|net]
 analytics\.getpostman\.com
 app\.getsentry\.com
 col\.eum-appdynamics\.com
+glancecdn\.net
 w\.usabilla\.com
 ```
 
